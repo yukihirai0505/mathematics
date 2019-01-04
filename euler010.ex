@@ -27,8 +27,10 @@ defmodule Solution do
   primes = Prime.prime_list(1000000)
   Enum.each(1..times, fn(_) ->
     num = StdIn.next_int()
-    Enum.filter(primes, fn prime -> prime <= num end)
-    |> Enum.sum
+    primes
+    |> Enum.reduce_while(0, fn prime, acc ->
+      if prime <= num, do: {:cont, acc + prime}, else: {:halt, acc}
+    end)
     |> IO.puts
   end)
 end
