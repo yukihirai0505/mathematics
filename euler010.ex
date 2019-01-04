@@ -4,14 +4,14 @@ defmodule Prime do
   end
 
   def prime_list(n) do
-    prime_list1([],Enum.to_list(2..n),:math.sqrt(n))
+    prime_list([],Enum.to_list(2..n),:math.sqrt(n))
   end
 
-  defp prime_list1(p,[l|ls],limit) do
+  defp prime_list(p,[l|ls],limit) do
     if l >= limit do
       p ++ [l|ls]
     else
-      prime_list1(p++[l],sieve([l|ls]),limit)
+      prime_list(p++[l],sieve([l|ls]),limit)
     end
   end
 end
