@@ -3,10 +3,6 @@ defmodule Prime do
     [l|ls] |> Enum.filter(fn(x) -> rem(x,l) != 0 end)
   end
 
-  def prime_count(n) do
-    prime_list(n) |> length
-  end
-
   def prime_list(n) do
     prime_list1([],Enum.to_list(2..n),:math.sqrt(n))
   end
