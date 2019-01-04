@@ -16,14 +16,19 @@ defmodule Prime do
   end
 end
 
+defmodule Std do
+  def next_int() do
+    IO.gets("") |> String.trim |> String.to_integer
+  end
+end
+
 defmodule Solution do
-  times = IO.gets("") |> String.trim |> String.to_integer
+  times = Std.next_int()
   primes = Prime.prime_list(1000000)
   Enum.each(1..times, fn(_) ->
-    num = IO.gets("") |> String.trim |> String.to_integer
+    num = Std.next_int()
     Enum.filter(primes, fn prime -> prime <= num end)
     |> Enum.sum
     |> IO.puts
   end)
-
 end
